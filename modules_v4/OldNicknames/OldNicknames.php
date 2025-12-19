@@ -222,8 +222,11 @@ class OldNicknames extends AbstractModule implements ModuleCustomInterface, Modu
             return $old_gedcom;
         }
         $old_name = $nameFact->value();
-        $new_name = preg_replace('/ \//', ' "' . $nick . '" /', $old_name);
-        return str_replace($old_name, $new_name, $old_gedcom);
+        $pos = strpos($old_gedcom, ' /');
+        if ($pos !== false) {
+            return substr_replace($old_gedcom, ' "' . $nick . '" /', $pos, 2);
+        }
+        return $old_gedcom;
     }
 
 }
