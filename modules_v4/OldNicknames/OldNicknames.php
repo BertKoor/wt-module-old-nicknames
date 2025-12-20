@@ -36,8 +36,8 @@ use Illuminate\Support\Collection;
 use function assert;
 use function implode;
 use function preg_match;
-use function preg_replace;
-use function str_replace;
+use function strpos;
+use function substr_replace;
 
 class OldNicknames extends AbstractModule implements ModuleCustomInterface, ModuleDataFixInterface
 {
@@ -46,7 +46,7 @@ class OldNicknames extends AbstractModule implements ModuleCustomInterface, Modu
 
     const GITHUB_USER = 'bertkoor';
     const GITHUB_REPO = 'wt-module-old-nicknames';
-    const THIS_VERSION = '1.0.0';
+    const THIS_VERSION = '1.0.1';
 
     /** @var DataFixService */
     private $data_fix_service;
@@ -132,11 +132,13 @@ class OldNicknames extends AbstractModule implements ModuleCustomInterface, Modu
      */
     protected function individualsToFix(Tree $tree, array $params): ?Collection
     {
-        return $this->individualsToFixQuery($tree, $params)
+        $result = $this->individualsToFixQuery($tree, $params)
             ->where('i_gedcom', 'LIKE', "%\n2 NICK %") // there is a nickname tag
             ->where('i_gedcom', 'LIKE', "%\n1 NAME % /%/%\n%") // display name contains slashed surname
             ->where('i_gedcom', 'NOT LIKE', "%\n1 NAME % \"%\" /%/%\n%") // display name does not contain quotes
             ->pluck('i_id');
+        error_log('OldNickNames result size: ' . count($result));
+        return $result;
     }
 
     /**
@@ -186,7 +188,8 @@ class OldNicknames extends AbstractModule implements ModuleCustomInterface, Modu
     {
         $nick = $nameFact->attribute('NICK');
         if ($nick != '') {
-            return preg_match('/ \/.*\//', $nameFact->value()) && !preg_match('/"' . $nick . '" \//', $nameFact->value());
+            return preg_match('/ \/.*\//', $nameFact->value()) &&
+                !strpos($nameFact->value(),'"' . $nick . '"');
         }
         return false;
     }
