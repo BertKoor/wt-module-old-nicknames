@@ -163,7 +163,7 @@ It checks a url on github.com, not on my own server, so traffic data is inaccess
 
 ## License
 ````
-Copyright (C) 2025 BertKoor.
+Copyright (C) 2025-2026 BertKoor.
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by

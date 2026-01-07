@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Copyright (C) 2025 BertKoor.
+ * Copyright (C) 2025-2026 BertKoor.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -10,8 +10,8 @@
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- * GNU General Public License for more details:
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details:
  * <https://www.gnu.org/licenses/>
  */
 
