@@ -134,13 +134,15 @@ If displaying the nickname was the only reason you used Vesta Classic Look & Fee
 then you can uninstall it.
 
 ## Installation instructions
-You can download the source files of this repository as a zip, and unzip them onto your server (without this README.txt)
+On your server there is a directory `modules_v4`.
+Create a subdirectory `wt-module-old-nicknames` in there.
 
-The directory structure in this repository is a mirror of the structure as found on a server running webtrees.
-Make sure the files are uploaded in this structure:
+Download the source files of this repository as a zip, and unzip them onto your server into the directory you just created.
+
+The end result looks like this:
 
  * `modules_v4 <dir>` (already exists on your server)
-   * `OldNicknames <dir>`
+   * `wt-module-old-nicknames <dir>`
      * `resources <dir>`
        * `views <dir>`
          * `edit <dir>`
@@ -148,7 +150,16 @@ Make sure the files are uploaded in this structure:
      * `module.php`
      * `OldNicknames.php`
 
-So the files `latest-version.txt` and this `README.md` should not be uploaded to your server.
+The files `latest-version.txt` and this `README.md` are not required to be uploaded to your server, but won't do any harm.
+
+## Privacy, telemetry, tracking, etc.
+Privacy: yes. Tracking: no. 
+
+There is no way for me to find out how many sites have this module installed, let alone which ones.
+It would be simple for me to implement it for the sake of monitoring, but I have chosen not to.
+
+The module will do a check on the latest available version whenever the webtrees Control Panel is opened.
+It checks a url on github.com, not on my own server, so traffic data is inaccessible to me.
 
 ## License
 ````
@@ -163,7 +174,7 @@ the Free Software Foundation, either version 3 of the License, or
 ````
 This program is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-GNU General Public License for more details:
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+See the GNU General Public License for more details:
 <https://www.gnu.org/licenses/>
 ````
